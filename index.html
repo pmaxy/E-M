@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <link rel="stylesheet" href="leaflet-search-master/src/leaflet-search.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css">
+    <link href='plugin/leaflet-search-master/dist/leaflet.fullscreen.css' rel='stylesheet' />
+    <script src='plugin/leaflet-search-master/dist/leaflet-search.min.js'></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+
+</head>
+<body>
+
+
+    <nav class="toolbar">
+        <div class="humbuger">
+            <ul class="items">
+                <li class="item1"></li>
+                <li class="item2"></li>
+                <li class="item3"></li>
+            </ul>
+        </div>
+        <div class="container">
+            <h1 class="logo">
+               SAM TECH E&M
+            </h1>
+            <ul class="list1">
+                <li class="item"><a href=""> Home</a></li>
+                <li class="item"><a href="">services</a></li>
+                <li class="item"><a href="">About</a> </li>                
+            </ul>
+        </div>
+    </nav>
+    <div id="map">
+        
+    </div>
+    
+
+
+<script src="map.js"></script>
+<script src="humbuger.js"></script>
+</script>
+<script src="leaflet-search-master/src/leaflet-search.js"></script>
+<script src="SAM TECH BUSINESSES.js"></script>
+<script>
+var sams=L.geoJson(samTech,{
+    onEachFeature: function(feature, layer){
+            layer.bindPopup(feature.properties.name);  
+}
+});
+const searchContrl=new L.Control.Search({
+  layer:sams,
+  zoom:16,
+  fadeAnimation:true,
+  zoomAnimation:true,
+  propertyName:"name"
+});
+
+map.addControl(searchContrl);
+</script>
+</html>
